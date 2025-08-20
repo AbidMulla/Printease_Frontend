@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Icon } from '@iconify/react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ScrollingText from '../../components/user/landingPage/ScrollingText'
 import SlidingImages from '../../components/user/landingPage/SlidingImages'
 import CategorySection from '../../components/user/landingPage/CategorySection'
@@ -10,6 +10,11 @@ import Footer from '../../components/user/landingPage/Footer'
 
 export default function LandingPage() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navigate = useNavigate()
+
+  const handleGetStarted = () => {
+    navigate('/login')
+  }
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -51,16 +56,27 @@ export default function LandingPage() {
 
             {/* Desktop CTA Buttons */}
             <div className="hidden md:flex items-center space-x-4">
-              <button className="text-gray-700 hover:text-indigo-600 px-4 py-2 rounded-md text-sm font-extrabold transition-colors duration-200 font-body tracking-wide">
+              <Link to="/add-to-cart" className="text-gray-700 hover:text-indigo-600 px-4 py-2 rounded-md text-sm font-extrabold transition-colors duration-200 font-body tracking-wide relative">
+                <Icon icon="heroicons:shopping-cart-20-solid" className="w-6 h-6" />
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+              </Link>
+              <Link to="/login" className="text-gray-700 hover:text-indigo-600 px-4 py-2 rounded-md text-sm font-extrabold transition-colors duration-200 font-body tracking-wide">
                 Sign In
-              </button>
-              <button className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg text-sm font-extrabold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-body tracking-wide">
+              </Link>
+              <button 
+                onClick={handleGetStarted}
+                className="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg text-sm font-extrabold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-body tracking-wide"
+              >
                 Get Started
               </button>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden">
+            {/* Mobile menu button and cart */}
+            <div className="md:hidden flex items-center space-x-3">
+              <Link to="/add-to-cart" className="text-gray-700 hover:text-indigo-600 focus:outline-none focus:text-indigo-600 relative">
+                <Icon icon="heroicons:shopping-cart-20-solid" className="h-6 w-6" />
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+              </Link>
               <button
                 onClick={toggleMenu}
                 className="text-gray-700 hover:text-indigo-600 focus:outline-none focus:text-indigo-600"
@@ -92,11 +108,18 @@ export default function LandingPage() {
                 <Link to="/contact" className="text-gray-700 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-extrabold transition-colors duration-200 font-body tracking-wide">
                   Contact
                 </Link>
+                <Link to="/add-to-cart" className="text-gray-700 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-extrabold transition-colors duration-200 font-body tracking-wide flex items-center justify-between">
+                  <span>Cart</span>
+                  <span className="bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">2</span>
+                </Link>
                 <div className="pt-4 pb-3 border-t border-gray-200">
-                  <button className="w-full text-left text-gray-700 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-extrabold transition-colors duration-200 font-body tracking-wide">
+                  <Link to="/login" className="w-full text-left text-gray-700 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-extrabold transition-colors duration-200 font-body tracking-wide">
                     Sign In
-                  </button>
-                  <button className="w-full mt-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg text-sm font-extrabold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-body tracking-wide">
+                  </Link>
+                  <button 
+                    onClick={handleGetStarted}
+                    className="w-full mt-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-4 py-2 rounded-lg text-sm font-extrabold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105 font-body tracking-wide"
+                  >
                     Get Started
                   </button>
                 </div>

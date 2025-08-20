@@ -120,7 +120,29 @@ function AboutUs() {
       </header>
 
       {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <main>
+        {/* Hero Background Image Section */}
+        <div className="relative h-[150px] md:h-[200px] overflow-hidden">
+          <img 
+            src="https://images.unsplash.com/photo-1562564055-71e051d33c19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
+            alt="Modern printing facility"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-transparent" />
+          
+          {/* Content */}
+          <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-center">
+            <h1 className="text-2xl md:text-4xl font-bold text-white mb-1 animate-fade-in">
+              About PrintEase
+            </h1>
+            <p className="text-base md:text-lg text-gray-200 max-w-xl animate-fade-in delay-200">
+              Transforming ideas into exceptional print experiences
+            </p>
+          </div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Company Overview Section */}
         <section className="mb-20">
           <div className="text-center mb-12">
@@ -216,6 +238,7 @@ function AboutUs() {
             ))}
           </div>
         </section>
+        </div>
       </main>
 
       {/* Footer */}
